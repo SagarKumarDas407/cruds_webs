@@ -4,7 +4,8 @@ const UserModel=require('../models/users')
 
 
 router.get('/', (req,res)=>{
-    res.render("index")
+  
+    res.render("index",)
 
 })
 
@@ -14,16 +15,20 @@ const {name,email,image}=req.body
 await UserModel.create({
 name,email,image
 })
+req.flash('Success', 'Data Submited Successfull!');
+
 res.redirect('/read')
 })
 
 router.get('/read', async (req,res)=>{
   const users=await UserModel.find()
-   res.render("read", {users} )
+  const  massege = req.flash('Success')
+   res.render("read", {users, messages:massege} )
 })
 
 router.get('/edit/:userid', async (req,res)=>{
   const user=await UserModel.findOne({_id:req.params.userid})
+  console.log(user)
    res.render("edit", {user})
 })
 

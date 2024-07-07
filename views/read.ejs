@@ -6,10 +6,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
 </head>
+"
+<body   class="bg-zinc-700">
 
-<body>
-
-    <div class="w-full h-screen bg-zinc-700 p-5">
+    <% if (messages.length > 0) { %>
+        <div id="flashm" class="flash-messages w-[300px] bg-slate-100 text-center absolute top-5   left-0  right-0 m-auto rounded-md ">
+            <% messages.forEach(message => { %>
+            <div class="flash-message text-green-500    ">
+                <%= message %>
+            </div>
+            <% }); %>
+        </div>
+        <% } %>
+    <div class="w-full h-lvh  p-5">
         <a href="/" class="m-20 m-5 text-white ">Go Back</a>
         <h3 class="m-5 text-white">All Users </h3>
 
@@ -41,6 +50,14 @@
 
 
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded',()=>{
+            setTimeout(()=>{
+                document.getElementById("flashm").style.display='none'
+            },3000)
+        })
+        
+       </script>
 </body>
 
 </html>
