@@ -2,9 +2,8 @@ const dotenv=require('dotenv')
 dotenv.config()
 const express=require('express')
 const app=express()
-const  http=require('http') 
-const  Server=http.createServer(app)
-
+const http=require('http') 
+const Server=http.createServer(app)
 const flash = require('express-flash');
 const session = require('express-session');
 const port=process.env.port||'3000'
